@@ -69,17 +69,23 @@ $hotels = [
             <tr>
                 <th scope="col" class="text-info">Nome Hotel</th>
                 <th scope="col" class="text-info">Descrizione</th>
-                <th scope="col" class="text-center text-info" >Parcheggio</th>
-                <th scope="col" class="text-center text-info" >Stelle</th>
-                <th scope="col" class="text-center text-info" >Distanza dal centro</th>
+                <th scope="col" class="text-center text-info">Parcheggio</th>
+                <th scope="col" class="text-center text-info">Stelle</th>
+                <th scope="col" class="text-center text-info">Distanza dal centro</th>
             </tr>
         </thead>
         <?php foreach ($hotels as $cur_hotel) { ?>
+            <?php if (($cur_hotel["parking"]) === true) {
+                $return = "Si";
+            } else {
+                $return = "No";
+            }
+            ?>
             <tbody>
                 <tr>
                     <th scope="row"><?php echo $cur_hotel["name"] ?></th>
                     <td><?php echo $cur_hotel["description"] ?></td>
-                    <td class="text-center"><?php echo $cur_hotel["parking"] ?></td>
+                    <td class="text-center"><?php echo $return ?></td>
                     <td class="text-center"><?php echo $cur_hotel["vote"] ?></td>
                     <td class="text-center"><?php echo $cur_hotel["distance_to_center"] ?> Km</td>
                 </tr>
